@@ -32,6 +32,7 @@
                             <chapter-marker start="504s" duration="100/3000s" value="Интерфейс Motion" posterOffset="11/30s"/>
                             <chapter-marker start="4114/5s" duration="100/3000s" value="Основные компоненты Motion" posterOffset="11/30s"/>
                             <chapter-marker start="31909/30s" duration="100/3000s" value="Про выполнение операций" posterOffset="11/30s"/>
+<chapter-marker start="5000000000000000s" duration="100/3000s" value="Про выполнение операций" posterOffset="11/30s"/>
                         </asset-clip>
                     </spine>
                 </sequence>
