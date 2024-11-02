@@ -1,54 +1,86 @@
 import xml.etree.ElementTree as ET
+import tkinter as tk
+from tkinter import filedialog, messagebox
+import pyperclip
 
+class XMLParserApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("FCPXML Parser")
+        
+        # Button to load the XML
+        self.load_button = tk.Button(root, text="Load XML", command=self.load_xml)
+        self.load_button.pack(pady=10)
+        
+        # Display area for chapter markers
+        self.chapter_display = tk.Text(root, wrap="word", width=60, height=20)
+        self.chapter_display.pack(pady=10)
+        
+        # Button to copy chapter markers to clipboard
+        self.copy_button = tk.Button(root, text="Copy to Clipboard", command=self.copy_to_clipboard)
+        self.copy_button.pack(pady=10)
 
-def main():
+        self.chapter_data = ""
 
-    # Load and parse the XML file
-    tree = ET.parse('D:\Projects\FinalTimecode\Info.fcpxml')
-    root = tree.getroot()
+    def load_xml(self):
+        # Clear previous data in both variables and text display
+        self.chapter_display.delete(1.0, tk.END)
+        self.chapter_data = ""
 
-    # Get the FCPXML version
-    fcpxml_version = root.get('version')
-    print("FCPXML Version:", fcpxml_version)
+        file_path = filedialog.askopenfilename(filetypes=[("FCPXML Files", "*.fcpxml")])
+        if not file_path:
+            messagebox.showwarning("No file selected", "Please select a valid FCPXML file.")
+            return
 
-    # Extract information from the resources section
-    resources = root.find('resources')
-    for format_tag in resources.findall('format'):
-        format_id = format_tag.get('id')
-        width = format_tag.get('width')
-        height = format_tag.get('height')
-        print(f"Format ID: {format_id}, Width: {width}, Height: {height}")
+        try:
+            # Load and parse the XML file
+            tree = ET.parse(file_path)
+            root = tree.getroot()
 
-    # Extract information from assets in resources
-    for asset_tag in resources.findall('asset'):
-        asset_id = asset_tag.get('id')
-        asset_name = asset_tag.get('name')
-        src = asset_tag.find('media-rep').get('src')  # Get media source URL
-        print(f"Asset ID: {asset_id}, Name: {asset_name}, Source: {src}")
+            # Extract project information
+            library = root.find('library')
+            if library is None:
+                self.chapter_display.insert(tk.END, "No library element found in XML.")
+                self.root.update()
+                return
 
-    # Extract project information
-    library = root.find('library')
-    for event in library.findall('event'):
-        event_name = event.get('name')
-        for project in event.findall('project'):
-            project_name = project.get('name')
-            print(f"Event: {event_name}, Project: {project_name}")
+            for event in library.findall('event'):
+                for project in event.findall('project'):
+                    sequence = project.find('sequence')
+                    if sequence is None:
+                        continue
+                    
+                    spine = sequence.find('spine')
+                    if spine is None:
+                        continue
+                    
+                    for asset_clip in spine.findall('asset-clip'):
+                        for chapter_marker in asset_clip.findall('chapter-marker'):
+                            start = chapter_marker.get('start')
+                            value = chapter_marker.get('value')
+                            if start and value:
+                                marker_text = f"{start} - {value}\n"
+                                self.chapter_data += marker_text
+                                self.chapter_display.insert(tk.END, marker_text)
+            
+            # If no chapter data was found, show a message
+            if not self.chapter_data:
+                self.chapter_display.insert(tk.END, "No chapter markers found.")
+            self.root.update()  # Update display after insertion
 
-    # Extract sequence details
-    for project in event.findall('project'):
-        sequence = project.find('sequence')
-        if sequence is not None:
-            duration = sequence.get('duration')
-            audio_rate = sequence.get('audioRate')
-            print(f"Sequence Duration: {duration}, Audio Rate: {audio_rate}")
+        except ET.ParseError:
+            messagebox.showerror("Parse Error", "Failed to parse the XML file.")
+        except Exception as e:
+            messagebox.showerror("Error", str(e))
 
-    # Extract chapter markers from asset-clips
-    for asset_clip in sequence.find('spine').findall('asset-clip'):
-        for chapter_marker in asset_clip.findall('chapter-marker'):
-            start = chapter_marker.get('start')
-            value = chapter_marker.get('value')
-            print(f"Chapter Marker: {value}, Start: {start}")
+    def copy_to_clipboard(self):
+        if self.chapter_data:
+            pyperclip.copy(self.chapter_data)
+            messagebox.showinfo("Copied", "Chapter markers copied to clipboard!")
+        else:
+            messagebox.showwarning("No Data", "No chapter markers to copy.")
 
-
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = XMLParserApp(root)
+    root.mainloop()
