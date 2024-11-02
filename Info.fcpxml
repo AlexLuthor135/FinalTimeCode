@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fcpxml>
+
+<fcpxml version="1.12">
+    <resources>
+        <format id="r1" name="FFVideoFormat1080p30" frameDuration="100/3000s" width="1920" height="1080" colorSpace="1-1-1 (Rec. 709)"/>
+        <asset id="r2" name="1. 👋 Вступительный урок — курс уроков по Apple Motion" uid="16DEDA10E4BDA54A783D32B9ED77EEE2" start="0s" duration="17956869/15360s" hasVideo="1" format="r1" hasAudio="1" videoSources="1" audioSources="1" audioChannels="2" audioRate="44100">
+            <media-rep kind="original-media" sig="16DEDA10E4BDA54A783D32B9ED77EEE2" src="file:///Users/powerpc/Downloads/%F0%9F%92%A5%20%D0%9A%D1%83%D1%80%D1%81%20%D1%83%D1%80%D0%BE%D0%BA%D0%BE%D0%B2%20%D0%BF%D0%BE%20Apple%20Motion/1.%20%F0%9F%91%8B%20%D0%92%D1%81%D1%82%D1%83%D0%BF%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B8%CC%86%20%D1%83%D1%80%D0%BE%D0%BA%20%E2%80%94%C2%A0%D0%BA%D1%83%D1%80%D1%81%20%D1%83%D1%80%D0%BE%D0%BA%D0%BE%D0%B2%20%D0%BF%D0%BE%20Apple%20Motion.mp4">
+                <bookmark>Ym9va1wDAAAAAAQQMAAAAPreACs2HaWwjDoTZwm+4GWsnNn4hxcmJLAbKSDIlmWtWAIAAAQAAAADAwAAABgAKAUAAAABAQAAVXNlcnMAAAAHAAAAAQEAAHBvd2VycGMACQAAAAEBAABEb3dubG9hZHMAAAAsAAAAAQEAAPCfkqUg0JrRg9GA0YEg0YPRgNC+0LrQvtCyINC/0L4gQXBwbGUgTW90aW9uXgAAAAEBAAAxLiDwn5GLINCS0YHRgtGD0L/QuNGC0LXQu9GM0L3Ri9C4zIYg0YPRgNC+0Log4oCUwqDQutGD0YDRgSDRg9GA0L7QutC+0LIg0L/QviBBcHBsZSBNb3Rpb24ubXA0AAAUAAAAAQYAABAAAAAgAAAAMAAAAEQAAAB4AAAACAAAAAQDAADYWgAAAAAAAAgAAAAEAwAA3qIDAAAAAAAIAAAABAMAABGjAwAAAAAACAAAAAQDAADCM14CAAAAAAgAAAAEAwAAiUNeAgAAAAAUAAAAAQYAAPwAAAAMAQAAHAEAACwBAAA8AQAACAAAAAAEAABBxltXaU3oWhgAAAABAgAAAQAAAAAAAAAPAAAAAAAAAAAAAAAAAAAACAAAAAQDAAADAAAAAAAAAAQAAAADAwAA9QEAAAgAAAABCQAAZmlsZTovLy8MAAAAAQEAAE1hY2ludG9zaCBIRAgAAAAEAwAAAACHETkAAAAIAAAAAAQAAEHGVdbkgAAAJAAAAAEBAAA4QTEzOUQ4Ny02MjQ2LTRGMDgtQjgxQS00RkNFOTRFNkE1RkMYAAAAAQIAAIEAAAABAAAA7xMAAAEAAAAAAAAAAAAAAAEAAAABAQAALwAAAAAAAAABBQAAzAAAAP7///8BAAAAAAAAABAAAAAEEAAA4AAAAAAAAAAFEAAATAEAAAAAAAAQEAAAeAEAAAAAAABAEAAAaAEAAAAAAAACIAAARAIAAAAAAAAFIAAAtAEAAAAAAAAQIAAAxAEAAAAAAAARIAAA+AEAAAAAAAASIAAA2AEAAAAAAAATIAAA6AEAAAAAAAAgIAAAJAIAAAAAAAAwIAAAUAIAAAAAAAABwAAAmAEAAAAAAAARwAAAIAAAAAAAAAASwAAAqAEAAAAAAAAQ0AAABAAAAAAAAAA=</bookmark>
+            </media-rep>
+            <metadata>
+                <md key="com.apple.proapps.spotlight.kMDItemCodecs">
+                    <array>
+                        <string>'avc1'</string>
+                        <string>MPEG-4 AAC</string>
+                    </array>
+                </md>
+            </metadata>
+        </asset>
+    </resources>
+    <library location="file:///Volumes/T7/%F0%9F%92%A5%20%D0%9A%D1%83%D1%80%D1%81%20%D1%83%D1%80%D0%BE%D0%BA%D0%BE%D0%B2%20%D0%BF%D0%BE%20Apple%20Motion/%F0%9F%92%A5%20%D0%9A%D1%83%D1%80%D1%81%20%D1%83%D1%80%D0%BE%D0%BA%D0%BE%D0%B2%20%D0%BF%D0%BE%20Apple%20Motion.fcpbundle/">
+        <event name="9.10.2024" uid="4ADAD439-97A3-46E8-916B-598812C2EFE2">
+            <project name="1. 👋 Вступительный урок — курс уроков по Apple Motion" uid="D7F4A947-57EB-4C5A-A6DA-5BE5154A2F54" modDate="2024-10-09 16:39:09 +0300">
+                <sequence format="r1" duration="17956864/15360s" tcStart="0s" tcFormat="NDF" audioLayout="stereo" audioRate="44.1k">
+                    <spine>
+                        <asset-clip ref="r2" offset="0s" name="1. 👋 Вступительный урок — курс уроков по Apple Motion" duration="17956864/15360s" tcFormat="NDF" audioRole="dialogue">
+                            <chapter-marker start="0s" duration="100/3000s" value="Панч!" posterOffset="11/30s"/>
+                            <chapter-marker start="1073/15s" duration="100/3000s" value="Что такое Apple Motion?" posterOffset="11/30s"/>
+                            <chapter-marker start="152s" duration="100/3000s" value="Чем Motion лучше After Effects" posterOffset="11/30s"/>
+                            <chapter-marker start="5771/15s" duration="100/3000s" value="Подойдет ли Motion лично вам?" posterOffset="11/30s"/>
+                            <chapter-marker start="446s" duration="100/3000s" value="Чему научат уроки по Motion?" posterOffset="11/30s"/>
+                            <chapter-marker start="504s" duration="100/3000s" value="Интерфейс Motion" posterOffset="11/30s"/>
+                            <chapter-marker start="4114/5s" duration="100/3000s" value="Основные компоненты Motion" posterOffset="11/30s"/>
+                            <chapter-marker start="31909/30s" duration="100/3000s" value="Про выполнение операций" posterOffset="11/30s"/>
+                        </asset-clip>
+                    </spine>
+                </sequence>
+            </project>
+        </event>
+        <smart-collection name="Projects" match="all">
+            <match-clip rule="is" type="project"/>
+        </smart-collection>
+        <smart-collection name="All Video" match="any">
+            <match-media rule="is" type="videoOnly"/>
+            <match-media rule="is" type="videoWithAudio"/>
+        </smart-collection>
+        <smart-collection name="Audio Only" match="all">
+            <match-media rule="is" type="audioOnly"/>
+        </smart-collection>
+        <smart-collection name="Stills" match="all">
+            <match-media rule="is" type="stills"/>
+        </smart-collection>
+        <smart-collection name="Favorites" match="all">
+            <match-ratings value="favorites"/>
+        </smart-collection>
+    </library>
+</fcpxml>
