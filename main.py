@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 import tkinter as tk
+import os
 from tkinter import ttk, filedialog, messagebox
 import pyperclip
 import platform
@@ -106,12 +107,19 @@ class XMLParserApp:
         self.chapter_display.delete(1.0, tk.END)
         self.chapter_data = ""
         
-        file_path = filedialog.askopenfilename(
-            filetypes=[("FCPXML Files", "*.fcpxml")],
-            parent=self.root
-        )
-        
-        if not file_path:
+        # Ask for the directory, assuming it's an FCPXMLD bundle
+        dir_path = filedialog.askdirectory(
+        title="Select FCPXMLD Bundle",
+        parent=self.root
+    )
+    
+        if not dir_path:
+            return
+
+        file_path = f"{dir_path}/info.fcpxml"
+    
+        if not os.path.isfile(file_path):
+            messagebox.showerror("File Error", "info.fcpxml not found in the selected directory.", parent=self.root)
             return
             
         try:
@@ -188,5 +196,3 @@ if __name__ == "__main__":
     app = XMLParserApp(root)
     root.mainloop()
     #pyinstaller --onefile --windowed --icon=./resources/icon.icns --name FinalTimeCode --hidden-import=pyperclip --debug=all main.py
-
-    
