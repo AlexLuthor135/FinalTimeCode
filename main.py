@@ -1,6 +1,5 @@
 import xml.etree.ElementTree as ET
 import tkinter as tk
-import os
 from tkinter import ttk, filedialog, messagebox
 import subprocess
 import platform
@@ -107,19 +106,12 @@ class XMLParserApp:
         self.chapter_display.delete(1.0, tk.END)
         self.chapter_data = ""
         
-        # Ask for the directory, assuming it's an FCPXMLD bundle
-        dir_path = filedialog.askdirectory(
-        title="Select FCPXMLD Bundle",
-        parent=self.root
-    )
-    
-        if not dir_path:
-            return
-
-        file_path = f"{dir_path}/info.fcpxml"
-    
-        if not os.path.isfile(file_path):
-            messagebox.showerror("File Error", "info.fcpxml not found in the selected directory.", parent=self.root)
+        file_path = filedialog.askopenfilename(
+            filetypes=[("FCPXML Files", "*.fcpxml")],
+            parent=self.root
+        )
+        
+        if not file_path:
             return
             
         try:
@@ -189,9 +181,9 @@ class XMLParserApp:
             # Use pbcopy for macOS clipboard with UTF-8 encoding
             process = subprocess.Popen('pbcopy', env={'LANG': 'en_US.UTF-8'}, stdin=subprocess.PIPE)
             process.communicate(self.chapter_data.encode('utf-8'))
-            messagebox.showinfo("Success", "Chapter markers copied to clipboard!", parent=self.root)
-        else:
-            messagebox.showwarning("No Data", "No chapter markers to copy.", parent=self.root)
+            #messagebox.showinfo("Success", "Chapter markers copied to clipboard!", parent=self.root)
+        #else:
+            #messagebox.showwarning("No Data", "No chapter markers to copy.", parent=self.root)
 
 if __name__ == "__main__":
     root = tk.Tk()
