@@ -2,7 +2,7 @@ import xml.etree.ElementTree as ET
 import tkinter as tk
 import os
 from tkinter import ttk, filedialog, messagebox
-import pyperclip
+import subprocess
 import platform
 
 class XMLParserApp:
@@ -186,7 +186,9 @@ class XMLParserApp:
 
     def copy_to_clipboard(self):
         if self.chapter_data:
-            pyperclip.copy(self.chapter_data)
+            # Use pbcopy for macOS clipboard with UTF-8 encoding
+            process = subprocess.Popen('pbcopy', env={'LANG': 'en_US.UTF-8'}, stdin=subprocess.PIPE)
+            process.communicate(self.chapter_data.encode('utf-8'))
             messagebox.showinfo("Success", "Chapter markers copied to clipboard!", parent=self.root)
         else:
             messagebox.showwarning("No Data", "No chapter markers to copy.", parent=self.root)
@@ -196,3 +198,5 @@ if __name__ == "__main__":
     app = XMLParserApp(root)
     root.mainloop()
     #pyinstaller --onefile --windowed --icon=./resources/icon.icns --name FinalTimeCode --hidden-import=pyperclip --debug=all main.py
+
+    
