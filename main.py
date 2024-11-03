@@ -102,6 +102,7 @@ class XMLParserApp:
                         self.hourly_length = True
 
     def load_xml(self):
+        self.hourly_length = False
         self.chapter_display.delete(1.0, tk.END)
         self.chapter_data = ""
         
