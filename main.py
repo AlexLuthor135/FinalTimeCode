@@ -197,6 +197,6 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = XMLParserApp(root)
     root.mainloop()
-    #pyinstaller --onefile --windowed --icon=./resources/icon.icns --name FinalTimeCode --hidden-import=pyperclip --debug=all main.py
+    #pyinstaller --onefile --windowed --icon=./resources/icon.icns --name FinalTimeCode --debug=all main.py
 
     
